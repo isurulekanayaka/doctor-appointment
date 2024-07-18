@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
     <style>
         .login {
-            background: url('https://img.freepik.com/free-photo/portrait-young-male-doctor_171337-1492.jpg?t=st=1721303340~exp=1721306940~hmac=63a6596621c663c18931cc4b24936b9b8f9cbe36e089854e76aaef38c2989fa3&w=1380');
+            background: url('{{ asset('images/register-bg.jpg') }}');
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
@@ -30,14 +30,14 @@
 </head>
 
 <body class="font-serif">
-    <div class="h-screen flex items-center">
+    <div class="flex items-center h-screen">
         <div class="flex dark-overlay">
-            <div class="w-full h-full flex items-center login bg-cover">
+            <div class="flex items-center w-full h-full bg-cover login">
                 <div class="text-white dark-overlay"></div>
             </div>
             <div class=" w-full h-full flex items-center justify-center bg-[#08090d]">
-                <form class="max-w-sm m-4 p-10 bg-white bg-opacity-70 rounded shadow-xl w-lvw">
-                    <p class="text-blue-500 font-bold text-center text-2xl mb-6">REGISTER</p>
+                <form class="max-w-sm p-10 m-4 bg-white rounded shadow-xl bg-opacity-70 w-lvw">
+                    <p class="mb-6 text-2xl font-bold text-center text-blue-500">REGISTER</p>
 
                     <!-- Name input -->
                     <div class="mb-4">
@@ -76,7 +76,7 @@
                     <!-- Register button -->
                     <div class="mb-6">
                         <button
-                            class="px-4 py-2 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded focus:outline-none"
+                            class="px-4 py-2 font-light tracking-wider text-white bg-gray-900 rounded hover:bg-gray-800 focus:outline-none"
                             type="submit">Register</button>
                     </div>
 
@@ -89,7 +89,7 @@
 
                 </form>
             </div>
-            
+
         </div>
 
     </div>
