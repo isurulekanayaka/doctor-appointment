@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
     <style>
         .login {
-            background: url('https://img.freepik.com/free-photo/portrait-smiling-male-doctor_171337-104.jpg?t=st=1721303330~exp=1721306930~hmac=96a0071f56e9edd7b2dbd1b5aa459f6d8b6f8a893d1a325494d4afef24f69a4a&w=1380');
+            background: url('{{ asset('images/login-bg.jpg') }}');
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
@@ -30,16 +30,16 @@
 </head>
 
 <body class="font-serif">
-    <div class="h-screen flex items-center">
+    <div class="flex items-center h-screen w-[1275px] border border-white">
         <div class="flex dark-overlay">
-            <div class="w-full h-full flex items-center login bg-cover">
+            <div class="flex items-center w-full h-full bg-cover login">
                 <div class="text-white dark-overlay"></div>
             </div>
             <div class=" w-full h-full flex items-center justify-center bg-[#08090d]">
-                <form class="max-w-sm m-4 p-10 bg-white bg-opacity-70 rounded shadow-xl w-lvw">
+                <form class="max-w-sm p-10 m-4 bg-white rounded shadow-xl bg-opacity-70 w-lvw">
 
                     <!-- Title -->
-                    <p class="text-blue-500 font-bold text-center text-2xl mb-6">LOGIN</p>
+                    <p class="mb-6 text-2xl font-bold text-center text-blue-500">LOGIN</p>
 
                     <!-- Email input -->
                     <div class="mb-4">
@@ -61,7 +61,7 @@
                     <!-- Login button and forgot password link -->
                     <div class="flex items-center justify-between mb-6">
                         <button
-                            class="px-4 py-2 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded focus:outline-none"
+                            class="px-4 py-2 font-light tracking-wider text-white bg-gray-900 rounded hover:bg-gray-800 focus:outline-none"
                             type="submit">Login</button>
                         <a class="text-sm text-gray-700 hover:text-red-400" href="#">Forgot password?</a>
                     </div>
@@ -73,9 +73,7 @@
 
                 </form>
             </div>
-
         </div>
-
     </div>
 </body>
 </html>
