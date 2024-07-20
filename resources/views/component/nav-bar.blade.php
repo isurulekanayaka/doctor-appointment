@@ -4,7 +4,7 @@
             <div class="flex items-center w-full">
                 <a class="text-3xl font-bold text-green-500" href="#">
                     <!-- <img class="h-9" src="logo.png" alt="logo"> -->
-                    Logo Here.
+                    <img src="{{ asset('images/dlogo.png') }}" alt="" class="w-16 h-16">
                 </a>
                 <!-- Nav Links -->
                 <ul class="hidden px-4 mx-auto space-x-12 font-semibold text-blue-500 md:flex">
@@ -15,7 +15,7 @@
                 </ul>
             </div>
             <!-- Sign In / Register      -->
-            <div class="flex gap-5 mr-8 md:mr-1">
+            <div class="flex gap-5 mr-8 md:mr-1 items-center">
                 <div class="relative group">
                     <a class="flex items-center justify-center px-5 text-center text-white bg-blue-500 border border-blue-500 w-28 rounded-xl group-hover:text-blue-500 group-hover:bg-white"
                         href="#">

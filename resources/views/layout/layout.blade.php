@@ -10,8 +10,8 @@
 
 <body>
     @include('component.nav-bar')
-    <div class="">
-        <div class="">
+    <div class="flex items-center justify-center w-screen">
+        <div class="w-[1275px]">
             <div class="px-5 md:px-0">
                 @yield('content')
             </div>
