@@ -8,9 +8,9 @@
                 </a>
                 <!-- Nav Links -->
                 <ul class="hidden px-4 mx-auto space-x-12 font-semibold text-blue-500 md:flex">
-                    <li><a class="hover:text-blue-700" href="#">Home</a></li>
-                    <li><a class="hover:text-blue-700" href="#">Category</a></li>
-                    <li><a class="hover:text-blue-700" href="#">Collections</a></li>
+                    <li><a class="hover:text-blue-700" href="{{ route('userhome.index') }}">Home</a></li>
+                    <li><a class="hover:text-blue-700" href="{{route('userchannel.index')}}">Doctor Channel</a></li>
+                    <li><a class="hover:text-blue-700" href="{{route('userfirstaid.index')}}">First Aid</a></li>
                     <li><a class="hover:text-blue-700" href="#">Contact Us</a></li>
                 </ul>
             </div>
@@ -27,7 +27,7 @@
                     </a>
                 </div>
             </div>
-            <div>
+            <div class="flex gap-5 mr-8 md:mr-1 items-center">
                 <a class="self-center navbar-burger md:hidden" href="#" onclick="openmenu()">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hover:text-blue-700" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
@@ -40,9 +40,9 @@
     </nav>
     <!-- Responsive Menu -->
     <div id="responsive-menu" class="fixed flex flex-col hidden bg-white border right-5 xl:hidden">
-        <a class="flex w-full h-8 px-4 hover:text-blue-700 hover:bg-slate-100" href="#">Home</a>
-        <a class="flex w-full h-8 px-4 hover:text-blue-700 hover:bg-slate-100" href="#">Collections</a>
-        <a class="flex w-full h-8 px-4 hover:text-blue-700 hover:bg-slate-100" href="#">Contact Us</a>
+        <a class="flex w-full h-8 px-4 hover:text-blue-700 hover:bg-slate-100" href="{{ route('userhome.index') }}">Home</a>
+        <a class="flex w-full h-8 px-4 hover:text-blue-700 hover:bg-slate-100" href="{{route('userchannel.index')}}">Doctor Channel</a>
+        <a class="flex w-full h-8 px-4 hover:text-blue-700 hover:bg-slate-100" href="{{route('userfirstaid.index')}}">First Aid</a>
         <a class="flex w-full h-8 px-4 hover:text-blue-700 hover:bg-slate-100" href="#">Category</a>
     </div>
 
