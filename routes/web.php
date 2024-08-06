@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FirstAidController;
 use App\Http\Controllers\UserChannelController;
 use App\Http\Controllers\UserHomeController;
@@ -17,11 +19,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('user.channel');
+    return view('auth.register');
 });
 
 Route::get('/home',[UserHomeController::class,'index'])->name('userhome.index');
 
 Route::get('/chanenl',[UserChannelController::class,'index'])->name('userchannel.index');
 
-Route::get('first-aid',[FirstAidController::class,'index'])->name('userfirstaid.index');
+Route::get('/first-aid',[FirstAidController::class,'index'])->name('userfirstaid.index');
+
+Route::get('/contact',[ContactController::class,'index'])->name('usercontact.index');
+
+Route::get('/fqa', function () {
+    return view('user.fqa');
+})->name('userfqa');
+
+Route::get('/login',[AuthController::class,'loginView'])->name('user.login');
+
+Route::get('/register',[AuthController::class,'registerView'])->name('user.register');

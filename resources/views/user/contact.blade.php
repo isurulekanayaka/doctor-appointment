@@ -25,8 +25,8 @@
 <body class="">
     @extends('layout.layout')
     @section('content')
-    <div class="container mx-auto mb-10 mt-5">
-        <div class="md:flex-row flex flex-col-reverse rounded-lg shadow-lg ">
+    <div class="container mb-10 mt-5 h-[90vh] flex items-center justify-center my-16 md:my-0">
+        <div class="md:flex-row flex flex-col-reverse rounded-lg shadow-lg w-screen">
             <div class="lg:w-1/2 contact flex items-end">
                 <div class="md:text-left font-semibold text-white p-4 w-full rounded-md" style="background-color: rgba(0, 0, 0, 0.77);">
                     <p class="text-lg mb-2">+94 71 0 288 225</p>
