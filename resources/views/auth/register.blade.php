@@ -6,93 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <style>
-        .login {
-            background: url('{{ asset('images/register-bg.jpg') }}');
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-            /* Required for absolute positioning within */
-            height: 100vh;
-            width: 200%;
-            /* Adjust height as needed */
-        }
-
-        .dark-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Adjust opacity as needed */
+        body {
+            overflow-x: hidden;
         }
     </style>
 </head>
 
 <body class="font-serif">
-    <div class="flex items-center h-screen">
-        <div class="flex dark-overlay">
-            <div class="flex items-center w-full h-full bg-cover login">
-                <div class="text-white dark-overlay"></div>
-            </div>
-            <div class=" w-full h-full flex items-center justify-center bg-[#08090d]">
-                <form class="max-w-sm p-10 m-4 bg-white rounded shadow-xl bg-opacity-70 w-lvw">
-                    <p class="mb-6 text-2xl font-bold text-center text-blue-500">REGISTER</p>
+    @extends('layout.layout')
+    @section('content')
+    <div class="flex items-center justify-center  md:my-0 ">
+        <div class="flex flex-col md:flex-row items-center justify-center w-full max-w-screen-xl gap-4 bg-white rounded-lg shadow-xl p-4 md:p-8">
+            <!-- Registration Form -->
+            <div class="md:w-2/5 bg-white p-8 rounded shadow-md border items-center justify-center w-screen">
+                <h2 class="text-2xl font-bold mb-6">Register</h2>
 
-                    <!-- Name input -->
+                <!-- Google Sign Up Button -->
+                <button class="w-full flex items-center justify-center bg-green-500 text-white py-2 px-4 rounded mb-4 hover:bg-green-600">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21.35 11.1h-9.9v2.8h5.98c-.56 2.42-2.5 4.14-4.93 4.14-2.93 0-5.32-2.39-5.32-5.32s2.39-5.32 5.32-5.32c1.38 0 2.64.52 3.6 1.37l2.11-2.11c-1.51-1.4-3.49-2.26-5.71-2.26-4.55 0-8.25 3.69-8.25 8.25s3.69 8.25 8.25 8.25c4.08 0 7.55-2.97 8.23-6.84.09-.45.14-.91.14-1.39 0-.53-.05-1.04-.14-1.53z" />
+                    </svg>
+                    Sign up with Google
+                </button>
+
+                <!-- Registration Form -->
+                <form>
                     <div class="mb-4">
-                        <label class="block text-sm text-gray-700" for="name">Name</label>
-                        <input
-                            class="w-full px-3 py-2 text-gray-700 bg-gray-200 rounded-md focus:outline-none focus:bg-white"
-                            type="text" id="name" placeholder="Enter your name" required>
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter your name">
                     </div>
-
-                    <!-- Email input -->
                     <div class="mb-4">
-                        <label class="block text-sm text-gray-700" for="email">E-mail</label>
-                        <input
-                            class="w-full px-3 py-2 text-gray-700 bg-gray-200 rounded-md focus:outline-none focus:bg-white"
-                            type="email" id="email" placeholder="Enter your email" required>
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter your email">
                     </div>
-
-                    <!-- Password input -->
                     <div class="mb-4">
-                        <label class="block text-sm text-gray-700" for="password">Password</label>
-                        <input
-                            class="w-full px-3 py-2 text-gray-700 bg-gray-200 rounded-md focus:outline-none focus:bg-white"
-                            type="password" id="password" placeholder="Enter your password" required>
+                        <label for="contact" class="block text-gray-700 text-sm font-bold mb-2">Contact Number</label>
+                        <input type="text" id="contact" name="contact" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter your contact number">
                     </div>
-
-                    <!-- Contact input -->
                     <div class="mb-4">
-                        <label class="block text-sm text-gray-700" for="contact">Contact</label>
-                        <input
-                            class="w-full px-3 py-2 text-gray-700 bg-gray-200 rounded-md focus:outline-none focus:bg-white"
-                            type="text" id="contact" placeholder="Enter your contact number" required>
+                        <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Address</label>
+                        <input type="text" id="address" name="address" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter your address">
                     </div>
-
-                    <!-- Other fields as needed -->
-
-                    <!-- Register button -->
+                    <div class="mb-4">
+                        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                        <input type="password" id="password" name="password" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter your password">
+                    </div>
                     <div class="mb-6">
-                        <button
-                            class="px-4 py-2 font-light tracking-wider text-white bg-gray-900 rounded hover:bg-gray-800 focus:outline-none"
-                            type="submit">Register</button>
+                        <label for="password_confirmation" class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
+                        <input type="password" id="password_confirmation" name="password_confirmation" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300" placeholder="Confirm your password">
                     </div>
-
-                    <!-- Already have an account? -->
-                    <div class="text-center">
-                        <a class="text-sm text-gray-700 hover:text-red-400" href="#">Already have an account?
-                            Login
-                            here</a>
+                    <div class="mb-4">
+                        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                            Register
+                        </button>
                     </div>
-
+                    <div class="flex justify-center text-sm">
+                        <a href="{{route('user.login')}}" class="text-blue-500 hover:text-blue-700">Already have an account? Sign In</a>
+                    </div>
                 </form>
             </div>
 
+            <!-- Image Section -->
+            <div class="md:w-3/5">
+                <img src="{{ asset('images/login2.jpg') }}" alt="Login Image" class="rounded-lg h-full w-full object-cover">
+            </div>
         </div>
-
     </div>
+    @endsection
 </body>
+
 
 </html>

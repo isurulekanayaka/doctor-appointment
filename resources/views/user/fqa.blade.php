@@ -199,7 +199,7 @@
         </div>
 
         <div class="text-center my-10">
-            <h2 class="text-2xl font-bold">For any other questions or assistance, feel free to <a href="#" class="text-blue-500">contact us!</a></h2>
+            <h2 class="text-2xl font-bold">For any other questions or assistance, feel free to <a href="{{route('usercontact.index')}}" class="text-blue-500">contact us!</a></h2>
         </div>
     </div>
 
