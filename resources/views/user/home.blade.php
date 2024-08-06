@@ -184,7 +184,7 @@
                     {{-- carousel end --}}
 
                     {{-- Find Doctor Start --}}
-                    <div class="mt-10">
+                    <div class="mt-20">
                         <div class="text-center">
                             <h1 class="text-5xl text-green-500 font-bold mb-10">Channel Your Doctor</h1>
                             <div
@@ -246,59 +246,155 @@
                     {{-- Find Doctor End --}}
 
                     {{-- our service start --}}
-                    <div class="mt-10">
+                    <div class="mt-20">
                         <div class="text-center">
                             <h1 class="text-5xl text-green-500 font-bold">Our Service</h1>
-                            <div class="mt-10 flex w-full gap-4">
-                                <div class="w-1/4 border p-4 text-center bg-blue-100 rounded-md border-blue-600">
+                            <div class="mt-10 flex md:flex-row flex-col w-full gap-4">
+                                <div
+                                    class="md:w-1/4 w-screen cursor-pointer py-16 border p-4 text-center bg-gray-100 rounded-md border-gray-600 hover:bg-blue-500 hover:text-white transition-all">
                                     <!-- Heroicons icon for 'Doctor Near Me' -->
-                                    <svg class="mx-auto mb-4 w-8 h-8 text-blue-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 4v1M12 20v-1M4.22 4.22a6 6 0 011.06 1.06m12.86 12.86a6 6 0 001.06-1.06M4 12H3m18 0h-1m-4.22-7.78a6 6 0 00-1.06 1.06M5.22 17.78a6 6 0 001.06-1.06M19.78 5.22a6 6 0 00-1.06-1.06M5.22 5.22a6 6 0 001.06 1.06m12.86-1.06a6 6 0 011.06 1.06M12 6v2m0 8v2" />
-                                    </svg>
-                                    <h3 class="text-3xl text-blue-500 font-semibold mb-3">Doctor Near Me</h3>
+                                    <div class="flex justify-center mb-4">
+                                        <img src="{{ asset('icon/near-doctor.png') }}" class="w-24 h-24"
+                                            alt="Specialization Icon">
+                                    </div>
+                                    <h3 class="text-3xl font-semibold mb-3">Doctor Near Me</h3>
                                     <p class="text-xl">Channeling appointments with local doctors.</p>
                                 </div>
-                                <div class="w-1/4 border p-4 text-center bg-gray-100 rounded-md border-gray-600">
-                                    <!-- Heroicons icon for 'Chat Consultation' -->
-                                    <svg class="mx-auto mb-4 w-8 h-8 text-gray-500" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M21 15a2 2 0 00-2-2H4a2 2 0 00-2 2v4a2 2 0 002 2h15l4 4v-4z" />
-                                    </svg>
-                                    <h3 class="text-3xl text-gray-500 font-semibold mb-3">Chat Consultation</h3>
+
+                                <div
+                                    class="md:w-1/4 w-screen cursor-pointer py-16 border p-4 text-center bg-gray-100 rounded-md border-gray-600 hover:bg-blue-500 hover:text-white transition-all">
+                                    <!-- Heroicons icon for 'Doctor Near Me' -->
+                                    <div class="flex justify-center mb-4">
+                                        <img src="{{ asset('icon/chat.png') }}" class="w-24 h-24" alt="Specialization Icon">
+                                    </div>
+                                    <h3 class="text-3xl font-semibold mb-3">Chat Consultation</h3>
                                     <p class="text-xl">Chat with a doctor for quick consultations.</p>
                                 </div>
-                                <div class="w-1/4 border p-4 text-center bg-orange-100 rounded-md border-orange-600">
-                                    <!-- Heroicons icon for 'First Aid' -->
-                                    <svg class="mx-auto mb-4 w-8 h-8 text-orange-500" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 12H9m0 0H3m6 0v6m6-6v6m6-6v6m-6-6v6m-6-6v6m0 0h6m6 0h6m-6-6V6m-6 6V6M9 6H3m6 0h6" />
-                                    </svg>
-                                    <h3 class="text-3xl text-orange-500 font-semibold mb-3">First Aid</h3>
+                                <div
+                                    class="md:w-1/4 w-screen cursor-pointer py-16 border p-4 text-center bg-gray-100 rounded-md border-gray-600 hover:bg-blue-500 hover:text-white transition-all">
+                                    <!-- Heroicons icon for 'Doctor Near Me' -->
+                                    <div class="flex justify-center mb-4">
+                                        <img src="{{ asset('icon/first-aid.png') }}" class="w-24 h-24"
+                                            alt="Specialization Icon">
+                                    </div>
+                                    <h3 class="text-3xl font-semibold mb-3">First Aid</h3>
                                     <p class="text-xl">Emergency situations and first aid guidance.</p>
                                 </div>
-
-                                <div class="w-1/4 border p-4 text-center bg-yellow-100 rounded-md border-yellow-600">
-                                    <!-- Heroicons icon for 'Medical Report' -->
-                                    <svg class="mx-auto mb-4 w-8 h-8 text-yellow-500" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 8h10M7 12h10M7 16h10M4 6a1 1 0 011-1h14a1 1 0 011 1v12a1 1 0 01-1 1H5a1 1 0 01-1-1V6z" />
-                                    </svg>
-                                    <h3 class="text-3xl text-yellow-500 font-semibold mb-3">Medical Report</h3>
+                                <div
+                                    class="md:w-1/4 w-screen cursor-pointer py-16 border p-4 text-center bg-gray-100 rounded-md border-gray-600 hover:bg-blue-500 hover:text-white transition-all">
+                                    <!-- Heroicons icon for 'Doctor Near Me' -->
+                                    <div class="flex justify-center mb-4">
+                                        <img src="{{ asset('icon/medical-report.png') }}" class="w-24 h-24"
+                                            alt="Specialization Icon">
+                                    </div>
+                                    <h3 class="text-3xl font-semibold mb-3">Medical Report</h3>
                                     <p class="text-xl">Medical tests and reports.</p>
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
                     {{-- our service end --}}
 
+                    {{-- Top Specialists start --}}
+                    <div class="mt-20">
+                        <div class="text-center">
+                            <h1 class="text-5xl text-green-500 font-bold">Top Specialists</h1>
+                            <div class="mt-10 flex md:flex-row flex-col  w-full gap-4">
+                                <div
+                                    class="md:w-1/4 w-screen cursor-pointer py-16 border p-4 text-center bg-gray-100 rounded-md border-gray-600 hover:bg-blue-500 hover:text-white transition-all">
+                                    <!-- Heroicons icon for 'Doctor Near Me' -->
+                                    <div class="flex justify-center mb-4">
+                                        <img src="{{ asset('icon/general-physician.png') }}" class="w-24 h-24"
+                                            alt="Specialization Icon">
+                                    </div>
+                                    <h3 class="text-3xl font-semibold mb-3">General Physician</h3>
+                                    <p class="text-xl">Diagnoses and treats general medical conditions.</p>
+                                </div>
+                                <div
+                                    class="md:w-1/4 w-screen cursor-pointer py-16 border p-4 text-center bg-gray-100 rounded-md border-gray-600 hover:bg-blue-500 hover:text-white transition-all">
+                                    <!-- Heroicons icon for 'Doctor Near Me' -->
+                                    <div class="flex justify-center mb-4">
+                                        <img src="{{ asset('icon/cardiologist.png') }}" class="w-24 h-24"
+                                            alt="Specialization Icon">
+                                    </div>
+                                    <h3 class="text-3xl font-semibold mb-3">Cardiologist</h3>
+                                    <p class="text-xl">Specializes in heart and blood vessel diseases.</p>
+                                </div>
+                                <div
+                                    class="md:w-1/4 w-screen cursor-pointer py-16 border p-4 text-center bg-gray-100 rounded-md border-gray-600 hover:bg-blue-500 hover:text-white transition-all">
+                                    <!-- Heroicons icon for 'Doctor Near Me' -->
+                                    <div class="flex justify-center mb-4">
+                                        <img src="{{ asset('icon/gynecologist1.png') }}" class="w-24 h-24"
+                                            alt="Specialization Icon">
+                                    </div>
+                                    <h3 class="text-3xl font-semibold mb-3">Gynecologist</h3>
+                                    <p class="text-xl">Specializes in women's health and reproductive systems.</p>
+                                </div>
+                                <div
+                                    class="md:w-1/4 w-screen cursor-pointer py-16 border p-4 text-center bg-gray-100 rounded-md border-gray-600 hover:bg-blue-500 hover:text-white transition-all">
+                                    <!-- Heroicons icon for 'Doctor Near Me' -->
+                                    <div class="flex justify-center mb-4">
+                                        <img src="{{ asset('icon/pediatrician.png') }}" class="w-24 h-24"
+                                            alt="Specialization Icon">
+                                    </div>
+                                    <h3 class="text-3xl font-semibold mb-3">Pediatrician</h3>
+                                    <p class="text-xl">Specializes in children's health and diseases.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Top Specialists end --}}
+
+                    {{-- About Us start --}}
+                    <div class="mt-20">
+                        <div class="text-center">
+                            <h1 class="text-5xl text-green-500 font-bold">About Us</h1>
+                    
+                            <div class="container mx-auto px-4 mt-10 shadow-xl pb-5 rounded-lg">
+                                <div class="text-center mb-12">
+                                    <p class="text-2xl text-black">
+                                        We are dedicated to providing top-notch medical services and consultations to
+                                        our community. Our team of experienced professionals is committed to your health and
+                                        well-being.
+                                    </p>
+                                </div>
+                                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                                    <!-- Image -->
+                                    <div class="md:w-1/2">
+                                        <img src="{{ asset('images/about.jpg') }}" alt="About Us"
+                                            class="w-full rounded-lg shadow-lg">
+                                    </div>
+                                    <!-- Text Content -->
+                                    <div class="md:w-1/2 text-justify">
+                                        <h3 class="text-2xl font-semibold text-blue-500 mb-4 flex items-center gap-2">
+                                            <!-- Heroicons icon for 'Mission' -->
+                                            <img src="{{ asset('icon/mission1.png') }}" class="w-8 h-8"
+                                            alt="Specialization Icon">
+                                            Our Mission
+                                        </h3>
+                                        <p class="text-lg text-black mb-4">
+                                            Our mission is to offer high-quality medical services, combining advanced
+                                            technology with compassionate care. We strive to make healthcare accessible
+                                            and affordable for everyone.
+                                        </p>
+                                        <h3 class="text-2xl font-semibold text-blue-500 mb-4 flex items-center gap-2">
+                                            <!-- Heroicons icon for 'Values' -->
+                                            <img src="{{ asset('icon/values.png') }}" class="w-8 h-8"
+                                            alt="Specialization Icon">
+                                            Our Values
+                                        </h3>
+                                        <ul class="list-disc list-inside text-lg text-black">
+                                            <li>Compassion and Respect</li>
+                                            <li>Innovation and Excellence</li>
+                                            <li>Integrity and Transparency</li>
+                                            <li>Teamwork and Collaboration</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
 
             </div>

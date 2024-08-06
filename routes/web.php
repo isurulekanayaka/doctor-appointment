@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('user.home');
 });
 
 Route::get('/home',[UserHomeController::class,'index'])->name('userhome.index');
@@ -37,3 +37,7 @@ Route::get('/fqa', function () {
 Route::get('/login',[AuthController::class,'loginView'])->name('user.login');
 
 Route::get('/register',[AuthController::class,'registerView'])->name('user.register');
+
+Route::get('/about', function () {
+    return view('user.about');
+})->name('userabout');

@@ -12,10 +12,10 @@
             </div>
             <div class="w-1/5 md:flex md:flex-col">
                 <h2 class="text-white">Other</h2>
-                <a href="#" class="mt-2 text-slate-300 hover:text-white">About</a>
-                <a href="#" class="mt-2 text-slate-300 hover:text-white">FQA</a>
-                <a href="#" class="mt-2 text-slate-300 hover:text-white">Contact Us</a>
-                <a href="#" class="mt-2 text-slate-300 hover:text-white">Channel</a>
+                <a href="{{route('userabout')}}" class="mt-2 text-slate-300 hover:text-white">About</a>
+                <a href="{{route('userfqa')}}" class="mt-2 text-slate-300 hover:text-white">FQA</a>
+                <a href="{{route('usercontact.index')}}" class="mt-2 text-slate-300 hover:text-white">Contact Us</a>
+                <a href="{{route('userchannel.index')}}" class="mt-2 text-slate-300 hover:text-white">Channel</a>
             </div>
             <div class="w-1/5">
                 <h2 class="mb-2 text-white">Social Media</h2>
