@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FirstAidController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserChannelController;
 use App\Http\Controllers\UserHomeController;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +45,5 @@ Route::get('/about', function () {
 })->name('userabout');
 
 Route::get('/appoinntment',[AppointmentController::class,'index'])->name('user.index');
+
+Route::get('/payment',[PaymentController::class,'index'])->name('user.payment');

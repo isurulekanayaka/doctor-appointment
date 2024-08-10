@@ -109,40 +109,44 @@
                             <div class="flex flex-col w-1/2">
                                 <label for="appointment-date" class="font-semibold mb-1">Select Date</label>
                                 <input type="text" id="appointment-date" name="appointment_date"
-                                    class="p-2 border border-gray-300 rounded" placeholder="Select your appointment date"
-                                    required>
+                                    class="p-2 border border-gray-300 rounded" placeholder="Select your appointment date">
                             </div>
                             <div class="flex flex-col w-1/2">
                                 <label for="appointment-time" class="font-semibold mb-1">Select Time</label>
                                 <input type="text" id="appointment-time" name="appointment_time"
-                                    class="p-2 border border-gray-300 rounded" placeholder="Select your appointment time"
-                                    required>
+                                    class="p-2 border border-gray-300 rounded" placeholder="Select your appointment time">
                             </div>
                         </div>
                     </div>
                     <div class="flex flex-col">
                         <label for="name" class="font-semibold mb-1">Full Name</label>
                         <input type="text" id="name" name="name" class="p-2 border border-gray-300 rounded"
-                            placeholder="Enter your full name" required>
+                            placeholder="Enter your full name">
                     </div>
                     <div class="flex flex-col">
                         <label for="email" class="font-semibold mb-1">Email Address</label>
                         <input type="email" id="email" name="email" class="p-2 border border-gray-300 rounded"
-                            placeholder="Enter your email address" required>
+                            placeholder="Enter your email address">
                     </div>
                     <div class="flex flex-col">
                         <label for="phone" class="font-semibold mb-1">Phone Number</label>
                         <input type="tel" id="phone" name="phone" class="p-2 border border-gray-300 rounded"
-                            placeholder="Enter your phone number" required>
+                            placeholder="Enter your phone number">
                     </div>
                     <div class="flex flex-col">
                         <label for="reason" class="font-semibold mb-1">Reason for Appointment</label>
                         <textarea id="reason" name="reason" class="p-2 border border-gray-300 rounded"
-                            placeholder="Briefly describe the reason for your visit" rows="4" required></textarea>
+                            placeholder="Briefly describe the reason for your visit" rows="4"></textarea>
                     </div>
+                    {{-- <a href="{{ route('user.payment') }}">
+                        <button type="submit"
+                            class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-white hover:text-blue-500 border border-blue-500 font-semibold">Submit</button>
+                    </a> --}}
+                </form>
+                <a href="{{ route('user.payment') }}">
                     <button type="submit"
                         class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-white hover:text-blue-500 border border-blue-500 font-semibold">Submit</button>
-                </form>
+                </a>
             </div>
         </div>
 
