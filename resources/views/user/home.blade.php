@@ -114,7 +114,7 @@
                 <div class="">
                     {{-- carousel start --}}
                     {{-- https://flickity.metafizzy.co/options --}}
-                    <div class="carousel"
+                    <div class="carousel md:block hidden"
                         data-flickity='{ "wrapAround": true, "autoPlay": 2500, "pageDots": false, "prevNextButtons": false }'>
 
                         <!-- Slide 1 -->
@@ -127,10 +127,10 @@
                                     schedule appointments with top-rated doctors who provide personalized care for your
                                     unique needs.</p>
                                 <div class="flex gap-5">
-                                    <a href="#"
+                                    <a href="{{route('userchannel.index')}}"
                                         class="px-5 py-2 mt-5 text-2xl text-white bg-blue-500 border border-blue-500 w-fit rounded-xl animate-jump hover:bg-transparent hover:text-blue-500 font-bold">Book
                                         Now</a>
-                                    <a href="#"
+                                    <a href="{{route('userabout')}}"
                                         class="px-5 py-2 mt-5 text-2xl text-blue-500 border border-blue-500 w-fit rounded-xl animate-jump hover:bg-transparent hover:text-blue-500 font-bold">Learn
                                         More</a>
                                 </div>
@@ -146,10 +146,10 @@
                                 <p class="mt-2 text-3xl text-black font-matching animate-fadeIn leading-relaxed">Find the
                                     right specialist for your health needs.</p>
                                 <div class="flex gap-5">
-                                    <a href="#"
+                                    <a href="{{route('userchannel.index')}}"
                                         class="px-5 py-2 mt-5 text-2xl text-white bg-blue-500 border border-blue-500 w-fit rounded-xl animate-jump hover:bg-transparent hover:text-blue-500 font-bold">Find
                                         Now</a>
-                                    <a href="#"
+                                    <a href="{{route('userabout')}}"
                                         class="px-5 py-2 mt-5 text-2xl text-blue-500 border border-blue-500 w-fit rounded-xl animate-jump hover:bg-transparent hover:text-blue-500 font-bold">Learn
                                         More</a>
                                 </div>
@@ -170,10 +170,10 @@
 
                                 </div>
                                 <div class="flex gap-5">
-                                    <a href="#"
+                                    <a href="{{route('userchannel.index')}}"
                                         class="px-5 py-2 mt-5 text-2xl text-white bg-blue-500 border border-blue-500 w-fit rounded-xl animate-jump hover:bg-transparent hover:text-blue-500 font-bold">Consult
                                         Now</a>
-                                    <a href="#"
+                                    <a href="{{route('userabout')}}"
                                         class="px-5 py-2 mt-5 text-2xl text-blue-500 border border-blue-500 w-fit rounded-xl animate-jump hover:bg-transparent hover:text-blue-500 font-bold">Learn
                                         More</a>
                                 </div>
@@ -184,7 +184,7 @@
                     {{-- carousel end --}}
 
                     {{-- Find Doctor Start --}}
-                    <div class="mt-20">
+                    <div class="md:mt-20">
                         <div class="text-center">
                             <h1 class="text-5xl text-green-500 font-bold mb-10">Channel Your Doctor</h1>
                             <div
