@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FirstAidController;
@@ -41,3 +42,5 @@ Route::get('/register',[AuthController::class,'registerView'])->name('user.regis
 Route::get('/about', function () {
     return view('user.about');
 })->name('userabout');
+
+Route::get('/appoinntment',[AppointmentController::class,'index'])->name('user.index');
