@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('user.home');
+    return view('admin.user');
 });
 
 Route::get('/home',[UserHomeController::class,'index'])->name('userhome.index');
@@ -49,3 +50,13 @@ Route::get('/about', function () {
 Route::get('/appoinntment',[AppointmentController::class,'index'])->name('user.index');
 
 Route::get('/payment',[PaymentController::class,'index'])->name('user.payment');
+
+
+// Admin Routes
+Route::get('/admin-dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+
+Route::get('/admin-hospital',[AdminController::class,'hospital'])->name('admin.hospital');
+
+Route::get('/admin-doctor',[AdminController::class,'doctor'])->name('admin.doctor');
+
+Route::get('/admin-user',[AdminController::class,'user'])->name('admin.user');
