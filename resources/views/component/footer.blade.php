@@ -3,7 +3,7 @@
         <div class="justify-between gap-24 px-5 py-6 md:px-0 md:flex ">
             <div class="w-3/5">
                 <!-- <img class="h-9" src="logo.png" alt="logo"> -->
-                <img src="{{ asset('images/dlogo.png') }}" alt="" class="w-24 h-24">
+                <a href="{{ route('userhome.index') }}"><img src="{{ asset('images/dlogo.png') }}" alt="" class="w-24 h-24"></a>
                 <h3 class="mt-2 font-mono text-slate-300">+94 71 0 288 225</h3>
                 <h3 class="mt-2 text-slate-300 text-nowrap">info@doctorchannelling.com</h3>
                 <h3 class="mt-2 text-slate-300 text-nowrap">doctorchannelling PLC, No: 108,</h3>

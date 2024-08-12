@@ -44,7 +44,7 @@
         /* } */
         */ .carousel-cell>* {
             position: relative;
-            z-index: 2;
+            z-index: 10;
         }
 
         /* carousel style end */

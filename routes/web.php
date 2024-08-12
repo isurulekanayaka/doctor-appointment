@@ -40,6 +40,8 @@ Route::get('/login',[AuthController::class,'loginView'])->name('user.login');
 
 Route::get('/register',[AuthController::class,'registerView'])->name('user.register');
 
+Route::get('/user-profile',[AuthController::class,'userProfile'])->name('user.profile');
+
 Route::get('/about', function () {
     return view('user.about');
 })->name('userabout');
