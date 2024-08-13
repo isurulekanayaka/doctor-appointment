@@ -5,6 +5,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FirstAidController;
+use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserChannelController;
 use App\Http\Controllers\UserHomeController;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.user');
+    return view('layout.hospital-layout');
 });
 
 Route::get('/home',[UserHomeController::class,'index'])->name('userhome.index');
@@ -60,3 +61,14 @@ Route::get('/admin-hospital',[AdminController::class,'hospital'])->name('admin.h
 Route::get('/admin-doctor',[AdminController::class,'doctor'])->name('admin.doctor');
 
 Route::get('/admin-user',[AdminController::class,'user'])->name('admin.user');
+
+// Hospital Routes
+Route::get('/hospital-dashboard',[HospitalController::class,'index'])->name('hospital.dashboard');
+
+Route::get('/hospital-appointment',[HospitalController::class,'appointment'])->name('hospital.appointment');
+
+Route::get('/hospital-doctor',[HospitalController::class,'doctor'])->name('hospital.doctor');
+
+Route::get('/hospital-channeling',[HospitalController::class,'channeling'])->name('hospital.channeling');
+
+Route::get('/hospital-payment',[HospitalController::class,'payment'])->name('hospital.payment');
