@@ -19,17 +19,17 @@
 
 <body class="text-gray-800 font-inter">
     <!--sidenav -->
-    @include('component.admin-sidenav')
+    @include('component.hospital-sidenav')
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
     <!-- end sidenav -->
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
         <!-- navbar -->
-        @include('component.admin-navbar')
+        @include('component.hospital-navbar')
         <!-- end navbar -->
 
         <!-- Content -->
-        @yield('admin-content')
+        @yield('hospital-content')
         <!-- End Content -->
     </main>
 

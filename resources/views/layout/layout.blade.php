@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-   @include('component.bot')
+   @include('user.bot')
 
     @include('component.footer')
 </body>
