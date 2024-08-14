@@ -28,7 +28,7 @@
                             Hospitals</p>
                         <h4
                             class="block antialiased tracking-normal font-sans text-4xl font-semibold leading-snug text-blue-gray-900">
-                            2,300</h4>
+                            {{$hospital}}</h4>
                         <p class="block antialiased font-sans text-lg leading-normal font-normal text-blue-gray-600 mt-4 mb-20">
                             Manage and monitor all registered hospitals in the system.</p>
                         <div class="absolute bottom-5 right-5">

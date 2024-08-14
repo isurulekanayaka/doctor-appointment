@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout.hospital-layout');
+    return view('user.home');
 });
 
 Route::get('/home',[UserHomeController::class,'index'])->name('userhome.index');
@@ -56,21 +56,23 @@ Route::get('/payment',[PaymentController::class,'index'])->name('user.payment');
 
 
 // Admin Routes
-Route::get('/admin-dashboard',[AdminController::class,'index'])->name('admin.dashboard');
-
-Route::get('/admin-hospital',[AdminController::class,'hospital'])->name('admin.hospital');
-
-Route::get('/admin-doctor',[AdminController::class,'doctor'])->name('admin.doctor');
-
-Route::get('/admin-user',[AdminController::class,'user'])->name('admin.user');
+Route::middleware(['auth', 'userType:admin'])->group(function () {
+    Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin-hospital', [AdminController::class, 'hospital'])->name('admin.hospital');
+    Route::get('/admin-doctor', [AdminController::class, 'doctor'])->name('admin.doctor');
+    Route::get('/admin-user', [AdminController::class, 'user'])->name('admin.user');
+    Route::get('/add-hospital',[AdminController::class,'addHospital'])->name('admin.addhospital');
+    Route::post('/add-hospital',[HospitalController::class,'storeHospital'])->name('addhospital');
+    Route::post('/update-hospital',[HospitalController::class,'updateHospital'])->name('updatehospital');
+    Route::get('/update-hospital',[HospitalController::class,'updateHospital'])->name('updatehospital');
+    Route::post('/delete-hospital',[HospitalController::class,'deleteHospital'])->name('deletehospital');
+});
 
 // Hospital Routes
-Route::get('/hospital-dashboard',[HospitalController::class,'index'])->name('hospital.dashboard');
-
-Route::get('/hospital-appointment',[HospitalController::class,'appointment'])->name('hospital.appointment');
-
-Route::get('/hospital-doctor',[HospitalController::class,'doctor'])->name('hospital.doctor');
-
-Route::get('/hospital-channeling',[HospitalController::class,'channeling'])->name('hospital.channeling');
-
-Route::get('/hospital-payment',[HospitalController::class,'payment'])->name('hospital.payment');
+Route::middleware(['auth', 'userType:doctor'])->group(function () {
+    Route::get('/hospital-dashboard', [HospitalController::class, 'index'])->name('hospital.dashboard');
+    Route::get('/hospital-appointment', [HospitalController::class, 'appointment'])->name('hospital.appointment');
+    Route::get('/hospital-doctor', [HospitalController::class, 'doctor'])->name('hospital.doctor');
+    Route::get('/hospital-channeling', [HospitalController::class, 'channeling'])->name('hospital.channeling');
+    Route::get('/hospital-payment', [HospitalController::class, 'payment'])->name('hospital.payment');
+});
