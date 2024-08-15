@@ -28,14 +28,17 @@
                             Hospitals</p>
                         <h4
                             class="block antialiased tracking-normal font-sans text-4xl font-semibold leading-snug text-blue-gray-900">
-                            {{$hospital}}</h4>
-                        <p class="block antialiased font-sans text-lg leading-normal font-normal text-blue-gray-600 mt-4 mb-20">
+                            {{ $hospitalCount }}</h4>
+                        <p
+                            class="block antialiased font-sans text-lg leading-normal font-normal text-blue-gray-600 mt-4 mb-20">
                             Manage and monitor all registered hospitals in the system.</p>
                         <div class="absolute bottom-5 right-5">
-                            <a href="" class="text-lg text-blue-500 hover:underline mt-4 inline-block">View
-                                Details</a>
-                            <button class="mt-4 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">Manage
-                                Hospitals</button>
+                            <a href="{{ route('admin.hospital') }}" class="">
+                                <button
+                                    class="mt-4 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">Manage
+                                    Hospitals
+                                </button>
+                            </a>
                         </div>
 
                     </div>
@@ -53,14 +56,17 @@
                             Doctors</p>
                         <h4
                             class="block antialiased tracking-normal font-sans text-4xl font-semibold leading-snug text-blue-gray-900">
-                            5,500</h4>
-                        <p class="block antialiased font-sans text-lg leading-normal font-normal text-blue-gray-600 mt-4 mb-20">
+                            {{ $doctorCount }}</h4>
+                        <p
+                            class="block antialiased font-sans text-lg leading-normal font-normal text-blue-gray-600 mt-4 mb-20">
                             View and manage doctor profiles and their specializations.</p>
                         <div class="absolute bottom-5 right-5">
-                            <a href="" class="text-lg text-blue-500 hover:underline mt-4 inline-block">View
-                                Details</a>
-                            <button class="mt-4 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">Manage
-                                Doctors</button>
+                            <a href="{{ route('admin.doctor') }}" class="">
+                                <button
+                                    class="mt-4 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">Manage
+                                    Doctors
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -82,14 +88,17 @@
                             Users</p>
                         <h4
                             class="block antialiased tracking-normal font-sans text-4xl font-semibold leading-snug text-blue-gray-900">
-                            10,200</h4>
-                        <p class="block antialiased font-sans text-lg leading-normal font-normal text-blue-gray-600 mt-4 mb-20">
+                            {{ $userCount }}</h4>
+                        <p
+                            class="block antialiased font-sans text-lg leading-normal font-normal text-blue-gray-600 mt-4 mb-20">
                             Oversee all user accounts, including patients and staff.</p>
                         <div class="absolute bottom-5 right-5">
-                            <a href="" class="text-lg text-blue-500 hover:underline mt-4 inline-block">View
-                                Details</a>
-                            <button class="mt-4 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">Manage
-                                Users</button>
+                            <a href="{{ route('admin.user') }}" class="">
+                                <button
+                                    class="mt-4 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">Manage
+                                    Users
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

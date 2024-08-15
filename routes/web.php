@@ -4,10 +4,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\FirstAidController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserChannelController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserHomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,8 @@ Route::get('/chanenl',[UserChannelController::class,'index'])->name('userchannel
 Route::get('/first-aid',[FirstAidController::class,'index'])->name('userfirstaid.index');
 
 Route::get('/contact',[ContactController::class,'index'])->name('usercontact.index');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/fqa', function () {
     return view('user.fqa');
@@ -61,11 +65,24 @@ Route::middleware(['auth', 'userType:admin'])->group(function () {
     Route::get('/admin-hospital', [AdminController::class, 'hospital'])->name('admin.hospital');
     Route::get('/admin-doctor', [AdminController::class, 'doctor'])->name('admin.doctor');
     Route::get('/admin-user', [AdminController::class, 'user'])->name('admin.user');
+
     Route::get('/add-hospital',[AdminController::class,'addHospital'])->name('admin.addhospital');
     Route::post('/add-hospital',[HospitalController::class,'storeHospital'])->name('addhospital');
     Route::post('/update-hospital',[HospitalController::class,'updateHospital'])->name('updatehospital');
     Route::get('/update-hospital',[HospitalController::class,'updateHospital'])->name('updatehospital');
     Route::post('/delete-hospital',[HospitalController::class,'deleteHospital'])->name('deletehospital');
+
+    Route::get('/add-doctor',[DoctorController::class,'addDoctor'])->name('admin.addDoctor');
+    Route::post('/add-doctor',[DoctorController::class,'storeDoctor'])->name('addDoctor');
+    Route::post('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
+    Route::get('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
+    Route::post('/delete-doctor',[DoctorController::class,'deleteDoctor'])->name('deletedoctor');
+
+    Route::get('/add-user',[UserController::class,'addUser'])->name('admin.addUser');
+    Route::post('/add-user',[UserController::class,'storeUser'])->name('addUser');
+    Route::post('/update-user',[UserController::class,'updateUser'])->name('updateuser');
+    Route::get('/update-user',[UserController::class,'updateUser'])->name('updateuser');
+    Route::post('/delete-user',[UserController::class,'deleteUser'])->name('deleteuser');
 });
 
 // Hospital Routes
