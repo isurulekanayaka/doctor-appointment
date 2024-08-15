@@ -37,7 +37,7 @@
             </div>
 
             {{-- TO ALERT JS --}}
-            <script>
+            {{-- <script>
                 // Hide success alert after 10 seconds
                 setTimeout(function() {
                     let successAlert = document.getElementById('success-alert');
@@ -53,7 +53,7 @@
                         errorAlert.style.display = 'none';
                     }
                 }, 1000);
-            </script>
+            </script> --}}
 
             <div class="flex mx-auto justify-center">
                 {{-- <!-- Owner Details -->
@@ -86,7 +86,8 @@
                     <h2 class="text-xl font-bold mb-4">Hospital Details</h2>
                     <form action="{{ route('addhospital') }}" method="POST">
                         @csrf
-                        <input type="text" name="id" id="id" value="{{ isset($hospital) ? $hospital->id : old('id') }}" hidden>
+                        <input type="text" name="id" id="id"
+                            value="{{ isset($hospital) ? $hospital->id : old('id') }}" hidden>
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
                             <input type="text" name="name" id="name"
@@ -125,7 +126,7 @@
                             <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
                             <input type="password" name="password" id="password"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                readonly >
+                                readonly>
                         </div>
 
                         <div class="flex items-center mt-6 justify-center">

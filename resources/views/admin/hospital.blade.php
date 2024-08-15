@@ -51,7 +51,7 @@
                             <th class="px-4 py-2 border">Hospital Name</th>
                             <th class="px-4 py-2 border">Location</th>
                             <th class="px-4 py-2 border">Contact Number</th>
-                            <th class="px-4 py-2 border">Number of Beds</th>
+                            <th class="px-4 py-2 border">Email</th>
                             <th class="px-4 py-2 border">Actions</th>
                         </tr>
                     </thead>
