@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\FirstAidController;
@@ -92,7 +93,6 @@ Route::middleware(['auth', 'userType:hospital'])->group(function () {
     Route::get('/hospital-dashboard', [HospitalController::class, 'index'])->name('hospital.dashboard');
     Route::get('/hospital-appointment', [HospitalController::class, 'appointment'])->name('hospital.appointment');
     Route::get('/hospital-doctor', [HospitalController::class, 'doctor'])->name('hospital.doctor');
-    Route::get('/hospital-channeling', [HospitalController::class, 'channeling'])->name('hospital.channeling');
     Route::get('/hospital-payment', [HospitalController::class, 'payment'])->name('hospital.payment');
 
     Route::get('/add/new-doctor',[DoctorController::class,'addnewDoctor'])->name('hospital.addDoctor');
@@ -101,4 +101,9 @@ Route::middleware(['auth', 'userType:hospital'])->group(function () {
     Route::get('/doctor/add-hospital/{doctor_id}', [DoctorController::class, 'addHospital'])->name('hospital.newdoctorAddHospital');
     Route::post('/search/hospital-doctors', [DoctorController::class,'searchRegisterDoctor'])->name('hospital.searchdoctor');
     Route::post('/search/hospital-new-doctors', [DoctorController::class,'searchNonRegisterDoctor'])->name('hospital.searchnewdoctor');
+
+    Route::get('/hospital-channeling', [ChannelController::class, 'channeling'])->name('hospital.channeling');
+    Route::get('/add-channel', [ChannelController::class, 'storeView'])->name('hospital.addChannel');
+    Route::post('/add-channel', [ChannelController::class, 'store'])->name('hospital.addChannel');
+
 });

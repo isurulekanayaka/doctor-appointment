@@ -17,9 +17,11 @@
 
         <div class="flex justify-between items-center mt-12 mx-5">
             <!-- Add Channeling Button -->
-            <button class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">
-                Add Channeling
-            </button>
+            <a href="{{ route('hospital.addChannel') }}">
+                <button class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">
+                    Add Channeling
+                </button>
+            </a>
         </div>
 
         <div class="mt-8 mx-5">

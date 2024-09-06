@@ -24,4 +24,10 @@ class DoctorHospital extends Model
     {
         return $this->belongsTo(User::class, 'hospital_id');
     }
+
+    // Relationship with Channel
+    public function channels()
+    {
+        return $this->hasMany(Channel::class);
+    }
 }

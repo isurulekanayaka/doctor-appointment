@@ -46,13 +46,6 @@ class HospitalController extends Controller
         return redirect()->back()->with('error', 'Unauthorized access.');
     }
     
-    public function channeling(Request $request)
-    {
-        $hospitalID = Auth::user()->id;
-        $channels= DoctorHospital::where('hospital_id',$hospitalID)->get();
-        // dd($channels);
-        return view('hospital.channeling', compact('channels'));
-    }
     public function payment(Request $request)
     {
         return view('hospital.payment-summery');
