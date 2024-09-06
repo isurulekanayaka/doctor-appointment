@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
-    public function index (Request $request)
+    public function index (Request $request,$id)
     {
+        // dd($id);
         return view('user.appointment');
     }
 }

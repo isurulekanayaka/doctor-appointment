@@ -107,6 +107,21 @@ class UserController extends Controller
     }
     public function deleteUser(Request $request)
     {
-        dd($request);
+        // Retrieve the user by ID
+        $user = User::find($request->id);
+    
+        // Check if the user exists
+        if ($user) {
+            // Delete the user
+            $user->delete();
+    
+            // Return a success message and redirect back
+            return redirect()->back()->with('message', 'User deleted successfully');
+        } else {
+            // Return an error message and redirect back
+            return redirect()->back()->with('message', 'User not found');
+        }
     }
+    
+    
 }

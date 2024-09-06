@@ -14,6 +14,17 @@
             /* Prevent horizontal scrolling */
         }
 
+        .day.disabled {
+            background-color: #f0f0f0;
+            color: #a0a0a0;
+            pointer-events: none;
+            /* Prevent click events */
+        }
+
+        .day.disabled:hover {
+            cursor: not-allowed;
+        }
+
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -187,11 +198,15 @@
 
                     // Add days in the month
                     for (let i = 1; i <= lastDate; i++) {
+                        const dayDate = new Date(year, month, i);
+                        const isPast = (dayDate < today);
                         const dayClass = (i === todayDate && month === todayMonth && year === todayYear) ? 'day today' :
                             'day';
                         const selectedClass = (selectedDay === i && month === currentMonth && year === currentYear) ?
                             'selected' : '';
-                        daysHTML += `<div class="day ${selectedClass}" data-day="${i}">${i}</div>`;
+                        const disabledClass = isPast ? 'disabled' : '';
+                        daysHTML +=
+                            `<div class="day ${selectedClass} ${disabledClass}" data-day="${i}" ${isPast ? 'data-disabled="true"' : ''}>${i}</div>`;
                     }
 
                     // Add empty days at the end of the calendar grid
@@ -204,6 +219,7 @@
                     calendarEl.innerHTML = daysHTML;
                     titleEl.textContent = `${getMonthName(month)} ${year}`;
                 }
+
 
                 function getMonthName(month) {
                     return new Date(currentYear, month).toLocaleString('default', {

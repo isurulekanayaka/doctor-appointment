@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Doctor;
 use function Ramsey\Uuid\v1;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use App\Mail\UserPasswordMail;
+use App\Models\DoctorHospital;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -26,11 +29,29 @@ class HospitalController extends Controller
     }
     public function doctor(Request $request)
     {
-        return view('hospital.doctor');
+        // Get the authenticated hospital (user with type "hospital")
+        $hospital = Auth::user();
+    
+        // Ensure the user is authenticated and is of type 'hospital'
+        if ($hospital && $hospital->type == 'hospital') {
+    
+            // Get all doctors that ARE already registered with this hospital
+            $doctors = Doctor::whereHas('hospitals', function ($query) use ($hospital) {
+                $query->where('hospital_id', $hospital->id);
+            })->get();
+    
+            return view('hospital.doctor', compact('doctors'));
+        }
+    
+        return redirect()->back()->with('error', 'Unauthorized access.');
     }
+    
     public function channeling(Request $request)
     {
-        return view('hospital.channeling');
+        $hospitalID = Auth::user()->id;
+        $channels= DoctorHospital::where('hospital_id',$hospitalID)->get();
+        // dd($channels);
+        return view('hospital.channeling', compact('channels'));
     }
     public function payment(Request $request)
     {
