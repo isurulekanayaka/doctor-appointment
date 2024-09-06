@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use App\Models\DoctorHospital;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -13,8 +15,15 @@ class DoctorController extends Controller
         return view('admin.add-doctor');
     }
 
+    // hospital panel
+    public function addnewDoctor(Request $request)
+    {
+        return view('hospital.add-newdoctor');
+    }
+
     public function storeDoctor(Request $request)
     {
+
         try {
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
@@ -24,9 +33,10 @@ class DoctorController extends Controller
                 'qualifications' => 'required|string|max:255',
                 'address' => 'required|string',
                 'experience' => 'required|integer|min:0',
-                'profile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                'profile_image' => 'nullable',
+                'doctor_id' => 'required|unique:doctors'
             ]);
-
+            // dd($request);
             // Handle file upload if a new image is provided
             if ($request->hasFile('profile_image')) {
                 $fileName = time() . '.' . $request->profile_image->extension();
@@ -40,8 +50,17 @@ class DoctorController extends Controller
                 $doctor->update($validated);
                 $message = 'Doctor updated successfully';
             } else {
-                Doctor::create($validated);
+                $doctor = Doctor::create($validated);
                 $message = 'Doctor added successfully';
+                $user = Auth::user();
+                // dd($user);
+                if ($user->type == 'hospital') {
+                    DoctorHospital::create([
+                        'doctor_id' => $doctor->id,
+                        'hospital_id' => $user->id, // Assuming the user is the hospital
+                    ]);
+                    $message = 'Doctor added successfully and assigned to the hospital';
+                }
             }
 
             return redirect()->back()->with('success', $message);
@@ -50,8 +69,8 @@ class DoctorController extends Controller
             Log::error('Failed to store or update doctor: ' . $e->getMessage(), [
                 'stack' => $e->getTraceAsString(),
             ]);
-
             // Redirect back with an error message
+            dd($e);
             return redirect()->back()->with('error', 'There was an issue saving the doctor. Please try again.');
         }
     }
@@ -108,5 +127,104 @@ class DoctorController extends Controller
             // Redirect with an error message
             return redirect()->back()->with('error', 'There was an issue deleting the doctor. Please try again.');
         }
+    }
+
+
+    public function doctorAddHospital()
+    {
+        // Get the authenticated hospital (user with type "hospital")
+        $hospital = Auth::user();
+
+        // Ensure the user is authenticated and is of type 'hospital'
+        if ($hospital && $hospital->type == 'hospital') {
+
+            // Get all doctors that are NOT already registered with this hospital
+            $doctors = Doctor::whereDoesntHave('hospitals', function ($query) use ($hospital) {
+                $query->where('hospital_id', $hospital->id);
+            })->get();
+
+            return view('hospital.doctor-addhospital', compact('doctors'));
+        }
+
+        return redirect()->back()->with('error', 'Unauthorized access.');
+    }
+
+    public function addHospital($doctor_id)
+    {
+        $doctor = Doctor::findOrFail($doctor_id);
+        $hospital = Auth::user();
+
+        if ($hospital->type == 'hospital') {
+            DoctorHospital::create([
+                'doctor_id' => $doctor->id,
+                'hospital_id' => $hospital->id,
+            ]);
+            return redirect()->back()->with('success', 'Doctor added to hospital successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Unauthorized action.');
+    }
+
+    public function searchRegisterDoctor(Request $request)
+    {
+
+        // Get the authenticated hospital (user with type "hospital")
+        $hospital = Auth::user();
+
+        // Ensure the user is authenticated and is of type 'hospital'
+        if ($hospital && $hospital->type == 'hospital') {
+
+            // Initialize the query to get doctors registered with the hospital
+            $query = Doctor::whereHas('hospitals', function ($query) use ($hospital) {
+                $query->where('hospital_id', $hospital->id);
+            });
+
+            // Apply search filters if provided
+            if ($request->has('name') && !empty($request->input('name'))) {
+                $query->where('name', 'like', '%' . $request->input('name') . '%');
+            }
+
+            if ($request->has('doctor_id') && !empty($request->input('doctor_id'))) {
+                $query->where('doctor_id', 'like', '%' . $request->input('doctor_id') . '%');
+            }
+
+            // Execute the query and get the results
+            $doctors = $query->get();
+
+            return view('hospital.doctor', compact('doctors'));
+        }
+
+        return redirect()->back()->with('error', 'Unauthorized access.');
+    }
+
+    public function searchNonRegisterDoctor(Request $request)
+    {
+        // Get the authenticated hospital (user with type "hospital")
+        $hospital = Auth::user();
+
+        // Ensure the user is authenticated and is of type 'hospital'
+        if ($hospital && $hospital->type == 'hospital') {
+
+            // Initialize the query to get doctors registered with the hospital
+            $query = Doctor::whereDoesntHave('hospitals', function ($query) use ($hospital) {
+                $query->where('hospital_id', $hospital->id);
+            });
+
+            // Apply search filters if provided
+            if ($request->has('name') && !empty($request->input('name'))) {
+                $query->where('name', 'like', '%' . $request->input('name') . '%');
+            }
+
+            if ($request->has('doctor_id') && !empty($request->input('doctor_id'))) {
+                $query->where('doctor_id', 'like', '%' . $request->input('doctor_id') . '%');
+            }
+
+            // Execute the query and get the results
+            $doctors = $query->get();
+
+            return view('hospital.doctor-addhospital', compact('doctors'));
+        }
+
+        return redirect()->back()->with('error', 'Unauthorized access.');
     }
 }

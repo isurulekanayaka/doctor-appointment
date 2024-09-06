@@ -15,12 +15,21 @@
     @section('hospital-content')
         <h1 class="text-center text-5xl text-green-500 font-semibold mt-6">Doctor Management</h1>
 
-        <div class="flex justify-between items-center mt-12 mx-5">
-            <!-- Add Doctor Button -->
-            <button class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 text-lg">
-                Add Doctor
-            </button>
-        </div>
+        <form action="{{ route('hospital.searchdoctor') }}" method="POST">
+            @csrf
+            <div class="flex justify-end items-center mt-12 mx-5 gap-3">
+                <div>
+                    <input type="text" name="name" class="py-2 border border-black rounded px-2" placeholder="Search by name" value="{{ request('name') }}">
+                </div>
+                <div>
+                    <input type="text" name="doctor_id" class="py-2 border border-black rounded px-2" placeholder="Search by doctor id" value="{{ request('doctor_id') }}">
+                </div>
+                <div>
+                    <button type="submit" class="bg-green-500 px-4 py-2 rounded hover:bg-green-600 border border-green-500">Search</button>
+                </div>
+            </div>
+        </form>
+        
 
         <div class="mt-8 mx-5">
             <!-- Doctors Table -->
@@ -28,6 +37,7 @@
                 <table class="min-w-full bg-white">
                     <thead>
                         <tr>
+                            <th class="px-4 py-2 border">Doctor ID</th>
                             <th class="px-4 py-2 border">Doctor Name</th>
                             <th class="px-4 py-2 border">Specialization</th>
                             <th class="px-4 py-2 border">Contact Number</th>
@@ -36,20 +46,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="px-4 py-2 border">Dr. Alice Johnson</td>
-                            <td class="px-4 py-2 border">Cardiologist</td>
-                            <td class="px-4 py-2 border">(555) 123-4567</td>
-                            <td class="px-4 py-2 border">alice.johnson@example.com</td>
-                            <td class="px-4 py-2 border">
-                                <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                                    Edit
-                                </button>
-                                <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
+                        @forelse ($doctors as $doctor)
+                            <tr>
+                                <td class="px-4 py-2 border">{{ $doctor->doctor_id }}</td>
+                                <td class="px-4 py-2 border">{{ $doctor->name }}</td>
+                                <td class="px-4 py-2 border">{{ $doctor->specialty }}</td>
+                                <td class="px-4 py-2 border">{{ $doctor->contact }}</td>
+                                <td class="px-4 py-2 border">{{ $doctor->email }}</td>
+                                <td class="px-4 py-2 border">
+                                    <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                                        Edit
+                                    </button>
+                                    <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="px-4 py-2 border text-center">
+                                    No doctors found.
+                                </td>
+                            </tr>
+                        @endforelse
                         <!-- Additional rows here -->
                     </tbody>
                 </table>

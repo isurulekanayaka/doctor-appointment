@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('password');
             $table->date('created_date');
-            $table->enum('type', ['user', 'admin', 'doctor']);
+            $table->enum('type', ['user', 'admin', 'hospital']);
             $table->rememberToken();
             $table->timestamps();
         });

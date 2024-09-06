@@ -54,9 +54,11 @@ Route::get('/about', function () {
     return view('user.about');
 })->name('userabout');
 
-Route::get('/appoinntment',[AppointmentController::class,'index'])->name('user.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/appointment/{id}', [AppointmentController::class, 'index'])->name('user.index');
 
-Route::get('/payment',[PaymentController::class,'index'])->name('user.payment');
+    Route::get('/payment', [PaymentController::class, 'index'])->name('user.payment');
+});
 
 
 // Admin Routes
@@ -72,11 +74,11 @@ Route::middleware(['auth', 'userType:admin'])->group(function () {
     Route::get('/update-hospital',[HospitalController::class,'updateHospital'])->name('updatehospital');
     Route::post('/delete-hospital',[HospitalController::class,'deleteHospital'])->name('deletehospital');
 
-    Route::get('/add-doctor',[DoctorController::class,'addDoctor'])->name('admin.addDoctor');
-    Route::post('/add-doctor',[DoctorController::class,'storeDoctor'])->name('addDoctor');
-    Route::post('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
-    Route::get('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
-    Route::post('/delete-doctor',[DoctorController::class,'deleteDoctor'])->name('deletedoctor');
+    // Route::get('/add-doctor',[DoctorController::class,'addDoctor'])->name('admin.addDoctor');
+    // Route::post('/add-doctor',[DoctorController::class,'storeDoctor'])->name('addDoctor');
+    // Route::post('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
+    // Route::get('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
+    // Route::post('/delete-doctor',[DoctorController::class,'deleteDoctor'])->name('deletedoctor');
 
     Route::get('/add-user',[UserController::class,'addUser'])->name('admin.addUser');
     Route::post('/add-user',[UserController::class,'storeUser'])->name('addUser');
@@ -86,10 +88,17 @@ Route::middleware(['auth', 'userType:admin'])->group(function () {
 });
 
 // Hospital Routes
-Route::middleware(['auth', 'userType:doctor'])->group(function () {
+Route::middleware(['auth', 'userType:hospital'])->group(function () {
     Route::get('/hospital-dashboard', [HospitalController::class, 'index'])->name('hospital.dashboard');
     Route::get('/hospital-appointment', [HospitalController::class, 'appointment'])->name('hospital.appointment');
     Route::get('/hospital-doctor', [HospitalController::class, 'doctor'])->name('hospital.doctor');
     Route::get('/hospital-channeling', [HospitalController::class, 'channeling'])->name('hospital.channeling');
     Route::get('/hospital-payment', [HospitalController::class, 'payment'])->name('hospital.payment');
+
+    Route::get('/add/new-doctor',[DoctorController::class,'addnewDoctor'])->name('hospital.addDoctor');
+    Route::post('/add-doctor',[DoctorController::class,'storeDoctor'])->name('addDoctor');
+    Route::get('/doctor/add-hospital',[DoctorController::class,'doctorAddHospital'])->name('hospital.doctorAddHospital');
+    Route::get('/doctor/add-hospital/{doctor_id}', [DoctorController::class, 'addHospital'])->name('hospital.newdoctorAddHospital');
+    Route::post('/search/hospital-doctors', [DoctorController::class,'searchRegisterDoctor'])->name('hospital.searchdoctor');
+    Route::post('/search/hospital-new-doctors', [DoctorController::class,'searchNonRegisterDoctor'])->name('hospital.searchnewdoctor');
 });

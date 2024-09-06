@@ -65,51 +65,56 @@
                     </div>
                 </div>
                 <div class="grid md:grid-cols-3 grid-rows mt-10 gap-5">
-                    {{-- To do foreach --}}
-                    <div>
-                        <div class="border border-green-100 bg-green-50 rounded-lg p-4 h-80">
+                    @forelse ($doctorHospitals as $entry)
+                        <div class="border border-green-100 bg-green-50 rounded-lg p-4">
                             <div class="flex mb-4">
                                 <div class="mr-4">
-                                    <img src="{{ asset('images/doc-tmp.jpeg') }}" alt="Doctor's Photo"
-                                        class="w-24 h-auto rounded-full">
+                                    <img src="{{ $entry->doctor->profile_image ? asset('profile/' . $entry->doctor->profile_image) : asset('images/doc-tmp.jpeg') }}"
+                                        alt="Doctor's Photo" class="w-24 h-auto rounded-full">
                                 </div>
                                 <div>
                                     <div class="flex items-center mb-2">
                                         <label class="font-semibold mr-2">Doctor Name:</label>
-                                        <p class="text-gray-700">John</p>
+                                        <p class="text-gray-700">{{ $entry->doctor->name }}</p>
                                     </div>
                                     <div class="flex items-center mb-2">
                                         <label class="font-semibold mr-2">Specialization:</label>
-                                        <p class="text-gray-700">Psychology</p>
+                                        <p class="text-gray-700">{{ $entry->doctor->specialty }}</p>
                                     </div>
-                                    <div class="flex items-center">
+                                    <div class="flex items-center mb-2">
                                         <label class="font-semibold mr-2">Hospital:</label>
-                                        <p class="text-gray-700">Base Hospital Colombo</p>
+                                        <p class="text-gray-700">{{ $entry->hospital->name }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde,
-                                    velit
-                                    porro optio earum cupiditate aliquam? Illum ullam sunt, iusto distinctio possimus nobis
-                                    porro numquam error voluptatibus nostrum ad quis illo.</p>
+                            <div class="flex items-center mb-2">
+                                <label class="font-semibold mr-2">Doctor Experience:</label>
+                                <p class="text-gray-700">{{ $entry->doctor->experience }} years</p>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <label class="font-semibold mr-2">Doctor Qualifications:</label>
+                                <p class="text-gray-700">{{ $entry->doctor->qualifications }}</p>
                             </div>
                             <div class="flex gap-5 mt-1">
                                 <button
                                     class="text-base px-2 text-center font-semibold border border-blue-500 rounded-xl h-12 text-blue-500 bg-white w-32"
-                                    onclick="openModal('John', 'Psychology', 'Base Hospital Colombo', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, velit porro optio earum cupiditate aliquam? Illum ullam sunt, iusto distinctio possimus nobis porro numquam error voluptatibus nostrum ad quis illo.')">Details</button>
-                                    <a href="{{ route('user.index') }}">
-                                        <button class="text-base px-2 text-center font-semibold text-white bg-blue-500 border border-blue-500 rounded-xl h-12 hover:text-blue-500 hover:bg-white w-32">
-                                            Appointment
-                                        </button>
-                                    </a>
+                                    onclick="openModal('{{ addslashes($entry->doctor->name) }}', '{{ addslashes($entry->doctor->specialty) }}', '{{ addslashes($entry->hospital->name) }}', '{{ addslashes($entry->doctor->qualifications) }}', '{{ addslashes($entry->doctor->experience) }}')">
+                                    Details
+                                </button>
+                                <a href="{{ route('user.index', ['id' => $entry->id]) }}">
+                                    <button
+                                        class="text-base px-2 text-center font-semibold text-white bg-blue-500 border border-blue-500 rounded-xl h-12 hover:text-blue-500 hover:bg-white w-32">
+                                        Appointment
+                                    </button>
+                                </a>
                             </div>
                         </div>
-                        
-                    </div>
-
-                    {{-- end foreach --}}
+                    @empty
+                        <p>No doctors are registered with any hospital.</p>
+                    @endforelse
                 </div>
+
+
 
                 <!-- Modal -->
                 <div id="detailsModal"
@@ -124,26 +129,26 @@
                     </div>
                 </div>
 
+                <script>
+                    function openModal(name, specialization, hospital, qualifications, experience) {
+                        document.getElementById('modalContent').innerHTML = `
+                            <p><strong>Doctor Name:</strong> ${name}</p>
+                            <p><strong>Specialization:</strong> ${specialization}</p>
+                            <p><strong>Hospital:</strong> ${hospital}</p>
+                            <p><strong>Doctor Qualifications:</strong> ${qualifications}</p>
+                            <p><strong>Doctor Experience:</strong> ${experience} years</p>
+                        `;
+                        document.getElementById('detailsModal').classList.remove('hidden');
+                    }
+
+                    function closeModal() {
+                        document.getElementById('detailsModal').classList.add('hidden');
+                    }
+                </script>
 
             </div>
         </div>
     @endsection
-    <script>
-        function openModal(name, specialization, hospital, description) {
-            document.getElementById('modalContent').innerHTML = `
-                <p><strong>Doctor Name:</strong> ${name}</p>
-                <p><strong>Specialization:</strong> ${specialization}</p>
-                <p><strong>Hospital:</strong> ${hospital}</p>
-                <p><strong>Description:</strong> ${description}</p>
-            `;
-            document.getElementById('detailsModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('detailsModal').classList.add('hidden');
-        }
-    </script>
-
 </body>
 
 </html>

@@ -89,7 +89,7 @@ class AuthController extends Controller
                 switch ($user->type) {
                     case 'admin':
                         return redirect()->route('admin.dashboard')->with('success', 'Welcome to the Admin Dashboard.');
-                    case 'doctor':
+                    case 'hospital':
                         return redirect()->route('hospital.dashboard')->with('success', 'Welcome to the Hospital Dashboard.');
                     case 'user':
                     default:

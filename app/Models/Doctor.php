@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'email',
@@ -18,5 +18,12 @@ class Doctor extends Model
         'address',
         'experience',
         'profile_image',
+        'doctor_id'
     ];
+
+    public function hospitals()
+    {
+        return $this->belongsToMany(User::class, 'doctor_hospital', 'doctor_id', 'hospital_id')
+            ->where('type', 'hospital');
+    }
 }
