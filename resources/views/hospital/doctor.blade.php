@@ -42,25 +42,16 @@
                             <th class="px-4 py-2 border">Specialization</th>
                             <th class="px-4 py-2 border">Contact Number</th>
                             <th class="px-4 py-2 border">Email Address</th>
-                            <th class="px-4 py-2 border">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($doctors as $doctor)
                             <tr>
-                                <td class="px-4 py-2 border">{{ $doctor->doctor_id }}</td>
-                                <td class="px-4 py-2 border">{{ $doctor->name }}</td>
-                                <td class="px-4 py-2 border">{{ $doctor->specialty }}</td>
-                                <td class="px-4 py-2 border">{{ $doctor->contact }}</td>
-                                <td class="px-4 py-2 border">{{ $doctor->email }}</td>
-                                <td class="px-4 py-2 border">
-                                    <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                                        Edit
-                                    </button>
-                                    <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 ml-2">
-                                        Delete
-                                    </button>
-                                </td>
+                                <td class="px-4 py-2 border">{{ $doctor->doctor->doctor_id }}</td>
+                                <td class="px-4 py-2 border">{{ $doctor->doctor->name }}</td>
+                                <td class="px-4 py-2 border">{{ $doctor->doctor->specialty }}</td>
+                                <td class="px-4 py-2 border">{{ $doctor->doctor->contact }}</td>
+                                <td class="px-4 py-2 border">{{ $doctor->doctor->email }}</td>
                             </tr>
                         @empty
                             <tr>

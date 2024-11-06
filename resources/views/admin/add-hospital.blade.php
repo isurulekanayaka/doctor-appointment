@@ -36,51 +36,7 @@
                 @endif
             </div>
 
-            {{-- TO ALERT JS --}}
-            {{-- <script>
-                // Hide success alert after 10 seconds
-                setTimeout(function() {
-                    let successAlert = document.getElementById('success-alert');
-                    if (successAlert) {
-                        successAlert.style.display = 'none';
-                    }
-                }, 1000);
-
-                // Hide error alert after 10 seconds
-                setTimeout(function() {
-                    let errorAlert = document.getElementById('error-alert');
-                    if (errorAlert) {
-                        errorAlert.style.display = 'none';
-                    }
-                }, 1000);
-            </script> --}}
-
             <div class="flex mx-auto justify-center">
-                {{-- <!-- Owner Details -->
-                    <div class="mr-5 max-w-lg bg-white p-8 shadow-lg rounded-lg  w-1/2">
-                        <h2 class="text-xl font-bold mb-4">Owner Details</h2>
-                        
-                        <div class="mb-4">
-                            <label for="owner_name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                            <input type="text" name="owner_name" id="owner_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter owner's name" required>
-                        </div>
-            
-                        <div class="mb-4">
-                            <label for="owner_email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-                            <input type="email" name="owner_email" id="owner_email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter owner's email address" required>
-                        </div>
-            
-                        <div class="mb-4">
-                            <label for="owner_contact" class="block text-gray-700 text-sm font-bold mb-2">Contact Number:</label>
-                            <input type="text" name="owner_contact" id="owner_contact" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter owner's contact number" required>
-                        </div>
-            
-                        <div class="mb-4">
-                            <label for="owner_address" class="block text-gray-700 text-sm font-bold mb-2">Address:</label>
-                            <textarea name="owner_address" id="owner_address" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter owner's address" required></textarea>
-                        </div>
-                    </div> --}}
-
                 <!-- Hospital Details -->
                 <div class="max-w-lg bg-white p-8 shadow-lg rounded-lg w-1/2">
                     <h2 class="text-xl font-bold mb-4">Hospital Details</h2>

@@ -49,13 +49,13 @@
                 <span class="text-sm">Channeling</span>
             </a>
         </li>
-        <li class="mb-1 group">
+        {{-- <li class="mb-1 group">
             <a href="{{ route('hospital.payment') }}"
                 class="flex font-semibold items-center py-2 px-4 text-black hover:bg-blue-500 rounded-md">
                 <img src="{{ asset('icon/payment.png') }}" class="w-6 h-6 text-blue-500 mr-3" alt="payment Icon">
                 <span class="text-sm">Payment Summery</span>
             </a>
-        </li>
+        </li> --}}
         <span class="text-gray-400 font-bold">Setting</span>
         <li class="mb-1 group">
             <form action="{{ route('logout') }}" method="POST" class="inline">
