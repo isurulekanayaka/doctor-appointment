@@ -13,7 +13,7 @@ class AdminController extends Controller
     {
         try {
             // Fetch counts for different types of users and doctors
-            $hospitalCount = User::where('type', 'doctor')->count(); // Count of users with type 'doctor'
+            $hospitalCount = User::where('type', 'hospital')->count(); // Count of users with type 'doctor'
             $doctorCount = Doctor::count(); // Total number of doctors
             $userCount = User::where('type', '!=', 'doctor')->count(); // Count of users not of type 'doctor'
 
@@ -32,7 +32,7 @@ class AdminController extends Controller
 
     public function hospital(Request $request)
     {
-        $hospital = User::where('type', 'doctor')->get();
+        $hospital = User::where('type', 'hospital')->get();
         // dd($hospital);
         return view('admin.hospital', compact('hospital'));
     }

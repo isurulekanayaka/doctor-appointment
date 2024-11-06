@@ -74,11 +74,11 @@ Route::middleware(['auth', 'userType:admin'])->group(function () {
     Route::get('/update-hospital',[HospitalController::class,'updateHospital'])->name('updatehospital');
     Route::post('/delete-hospital',[HospitalController::class,'deleteHospital'])->name('deletehospital');
 
-    // Route::get('/add-doctor',[DoctorController::class,'addDoctor'])->name('admin.addDoctor');
-    // Route::post('/add-doctor',[DoctorController::class,'storeDoctor'])->name('addDoctor');
-    // Route::post('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
-    // Route::get('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
-    // Route::post('/delete-doctor',[DoctorController::class,'deleteDoctor'])->name('deletedoctor');
+    Route::get('/add-doctor',[DoctorController::class,'addDoctor'])->name('admin.addDoctor');
+    Route::post('/add-doctor',[DoctorController::class,'storeDoctor'])->name('addDoctor');
+    Route::post('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
+    Route::get('/update-doctor',[DoctorController::class,'updateDoctor'])->name('updatedoctor');
+    Route::post('/delete-doctor',[DoctorController::class,'deleteDoctor'])->name('deletedoctor');
 
     Route::get('/add-user',[UserController::class,'addUser'])->name('admin.addUser');
     Route::post('/add-user',[UserController::class,'storeUser'])->name('addUser');
@@ -98,7 +98,7 @@ Route::middleware(['auth', 'userType:hospital'])->group(function () {
     Route::get('/add/new-doctor',[DoctorController::class,'addnewDoctor'])->name('hospital.addDoctor');
     Route::post('/add-doctor',[DoctorController::class,'storeDoctor'])->name('addDoctor');
     Route::get('/doctor/add-hospital',[DoctorController::class,'doctorAddHospital'])->name('hospital.doctorAddHospital');
-    Route::get('/doctor/add-hospital/{doctor_id}', [DoctorController::class, 'addHospital'])->name('hospital.newdoctorAddHospital');
+    Route::post('/doctor/add-hospital', [DoctorController::class, 'addHospital'])->name('hospital.newdoctorAddHospital');
     Route::post('/search/hospital-doctors', [DoctorController::class,'searchRegisterDoctor'])->name('hospital.searchdoctor');
     Route::post('/search/hospital-new-doctors', [DoctorController::class,'searchNonRegisterDoctor'])->name('hospital.searchnewdoctor');
 });

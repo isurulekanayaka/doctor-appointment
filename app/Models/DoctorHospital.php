@@ -11,7 +11,22 @@ class DoctorHospital extends Model
 
     protected $table = 'doctor_hospital';
 
-    protected $fillable = ['doctor_id', 'hospital_id'];
+    protected $fillable = [
+        'doctor_id',
+        'hospital_id',
+        'channel_name',
+        'start_time',
+        'end_time',
+        'avg_time',
+        'sunday',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday'
+    ];
+
 
     // Define the relationship to the Doctor model
     public function doctor()

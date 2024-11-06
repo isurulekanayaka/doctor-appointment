@@ -32,24 +32,24 @@ class HospitalController extends Controller
         // Get the authenticated hospital (user with type "hospital")
         $hospital = Auth::user();
     
-        // Ensure the user is authenticated and is of type 'hospital'
-        if ($hospital && $hospital->type == 'hospital') {
+        // Retrieve distinct doctors associated with the hospital
+        $doctors = DoctorHospital::where('hospital_id', $hospital->id)
+            ->distinct()
+            ->with('doctor') // Ensure you eager load the doctor relationship
+            ->get(['doctor_id']); // Only retrieve the doctor_id to avoid duplicates
     
-            // Get all doctors that ARE already registered with this hospital
-            $doctors = Doctor::whereHas('hospitals', function ($query) use ($hospital) {
-                $query->where('hospital_id', $hospital->id);
-            })->get();
+        // Fetch additional doctor details
+        $doctorIds = $doctors->pluck('doctor_id'); // Extract unique doctor IDs
+        $doctorDetails = Doctor::whereIn('id', $doctorIds)->get(); // Fetch doctor details
     
-            return view('hospital.doctor', compact('doctors'));
-        }
-    
-        return redirect()->back()->with('error', 'Unauthorized access.');
+        return view('hospital.doctor', compact('doctors'));
     }
     
+
     public function channeling(Request $request)
     {
         $hospitalID = Auth::user()->id;
-        $channels= DoctorHospital::where('hospital_id',$hospitalID)->get();
+        $channels = DoctorHospital::where('hospital_id', $hospitalID)->get();
         // dd($channels);
         return view('hospital.channeling', compact('channels'));
     }
@@ -81,7 +81,7 @@ class HospitalController extends Controller
         ]);
 
         // Define the user type
-        $userType = "doctor";
+        $userType = "hospital";
         // dd($request);
         try {
             DB::beginTransaction(); // Start the transaction
